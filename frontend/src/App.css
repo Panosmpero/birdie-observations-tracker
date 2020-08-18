@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font: 1.6rem Helvetica;
+  height: 100vh;
+  padding: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style-type: none;
+}
+
+#root {
+  height: 100%;
+}
+
+.home-screen {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 5% 95%;
+      grid-template-rows: 5% 95%;
+  height: 100%;
+}
+
+.main-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100%;
+}
+
+.main-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 5;
+      -ms-flex: 5 0 15rem;
+          flex: 5 0 15rem;
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
+  height: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-right: 1rem;
+}
+
+.table-container {
+  -ms-flex-preferred-size: 48%;
+      flex-basis: 48%;
+  overflow-y: auto;
+}
+
+.linegraph-container {
+  -ms-flex-preferred-size: 48%;
+      flex-basis: 48%;
+  background-color: gray;
+}
+
+.timeline-container {
+  overflow-y: auto;
+  -webkit-box-flex: 4;
+      -ms-flex: 4 0 25rem;
+          flex: 4 0 25rem;
+  text-transform: capitalize;
+  height: 100%;
+}
+/*# sourceMappingURL=App.css.map */
