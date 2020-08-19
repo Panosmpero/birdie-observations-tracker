@@ -1,33 +1,23 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { observationsRequest } from "../store/actions/observationsActions";
-import { raw } from "./raw";
 import * as util from "../util";
 
 const Table = () => {
-  // const { payload, error } = useSelector((state) => state.observations);
-  // const dispatch = useDispatch();
+  const { payload, error } = useSelector((state) => state.observations);
+  const dispatch = useDispatch();
 
-  // const getObservations = () => {
-  //   console.log("dispatch");
-  //   dispatch(observationsRequest());
-  // };
+  const getObservations = () => {
+    dispatch(observationsRequest());
+  };
 
-  // useEffect(() => {
-  //   getObservations();
-  //   // eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    getObservations();
+    // eslint-disable-next-line
+  }, []);
 
-  let error;
-  const tableKeys = util.filterDataKeys(raw)
+  const tableKeys = payload ? util.filterDataKeys(payload) : []
 
-  // const payload = raw.map((obs) =>
-  //   tableKeys.map((x) => (obs[x] && typeof obs[x] === "string" ? obs[x] : "-"))
-  // );
-  // observed observations screenpops navigation
-  const payload = raw;
-  // console.log(payload);
-  // console.log(tableKeys);
   return (
     <div className="table-container container overflow">
       {error ? (

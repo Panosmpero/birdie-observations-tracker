@@ -52,66 +52,6 @@ body {
   margin: 1rem;
 }
 
-.options-bar {
-  color: $birdie_lighter;
-  background-color: $birdie_dark;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom-left-radius: 40%;
-  border-bottom-right-radius: 40%;
-
-  label {
-    margin: 0 .5rem 0 .5rem;
-  }
-
-  #eventType {
-    margin-left: .5rem;
-  }
-
-  select, input {
-    border-radius: 1rem;
-    padding: .1rem;
-
-    &:hover {
-      box-shadow: 0 0 5px 2px $birdie_light;
-    }
-  }
-
-  input[type=submit] {
-    padding: .5rem;
-    margin-left: .5rem;
-    cursor: pointer;
-  }
-
-}
-
-.table-container {
-  flex-basis: 48%;
-  flex: 1;
-  font-size: 1.34rem;
-  max-width: calc(100vw - 2.75em);
-  overflow-x: auto;
-  border-collapse: collapse;
-
-  th {
-    text-transform: uppercase;
-    border-bottom: 1px $birdie_dark solid;
-  }
-
-  tbody {
-    tr {
-      &:nth-child(even) {
-        background-color: $birdie_light;
-      }
-
-      td {
-        padding: 0.4rem;
-      }
-    }
-  }
-}
-
 .linegraph-container {
   flex-basis: 48%;
   margin-top: 1rem;
@@ -158,5 +98,24 @@ body {
     box-shadow: inset 0 0 3px $birdie_light;
     background: $birdie_dark;
     border-radius: 10px;
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .home-screen {
+    grid-template-rows: 10% 87%;
+  }
+}
+
+@media (max-width: 850px) {
+  .home-screen {
+    grid-template-rows: 14% 83%;
+  }
+}
+
+@media (max-width: 500px) {
+  .home-screen {
+    grid-template-rows: 19% 78%;
   }
 }

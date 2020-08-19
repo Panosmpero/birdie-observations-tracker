@@ -1,17 +1,17 @@
 import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 import * as types from "../actions/observationsTypes";
-import { api, serialize } from "../../util";
+import * as util from "../../util";
 
-const getAsyncObservations = function* ({settings}) {
+const getAsyncObservations = function* ({ settings }) {
   try {
-    settings = serialize(settings)
-    const apiURL = settings ? `${api.observations}/settings?${settings}` : api.observations
+    settings = util.serialize(settings);
+    const apiURL = settings
+      ? `${util.api.observations}/settings?${settings}`
+      : util.api.observations;
     const { data } = yield axios.get(apiURL);
-    console.log("sagas", data);
     yield put({ type: types.OBSERVATIONS_LIST_SUCCESS, payload: data });
   } catch (error) {
-    console.log("sagas", error);
     yield put({ type: types.OBSERVATIONS_LIST_FAILURE, error });
   }
 };
