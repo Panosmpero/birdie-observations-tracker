@@ -20,6 +20,7 @@ body {
   font: 1.6rem Helvetica;
   height: 100vh;
   background-color: #d0f3f2;
+  overflow-x: hidden;
 }
 
 #root {
@@ -29,8 +30,8 @@ body {
 .home-screen {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 5% 90%;
-      grid-template-rows: 5% 90%;
+  -ms-grid-rows: 7% 90%;
+      grid-template-rows: 7% 90%;
   height: 100%;
 }
 
@@ -79,7 +80,27 @@ body {
 }
 
 .options-bar label {
-  margin: 0 .5rem 0 1.5rem;
+  margin: 0 .5rem 0 .5rem;
+}
+
+.options-bar #eventType {
+  margin-left: .5rem;
+}
+
+.options-bar select, .options-bar input {
+  border-radius: 1rem;
+  padding: .1rem;
+}
+
+.options-bar select:hover, .options-bar input:hover {
+  -webkit-box-shadow: 0 0 5px 2px #d0f3f2;
+          box-shadow: 0 0 5px 2px #d0f3f2;
+}
+
+.options-bar input[type=submit] {
+  padding: .5rem;
+  margin-left: .5rem;
+  cursor: pointer;
 }
 
 .table-container {
@@ -89,6 +110,9 @@ body {
       -ms-flex: 1;
           flex: 1;
   font-size: 1.34rem;
+  max-width: calc(100vw - 2.75em);
+  overflow-x: auto;
+  border-collapse: collapse;
 }
 
 .table-container th {

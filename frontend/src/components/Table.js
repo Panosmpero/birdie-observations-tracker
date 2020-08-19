@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { observationsRequest } from "../store/actions/observationsActions";
-import {raw} from "./raw";
-import moment from "moment";
+import { raw } from "./raw";
+import * as util from "../util";
 
 const Table = () => {
   // const { payload, error } = useSelector((state) => state.observations);
@@ -17,8 +17,17 @@ const Table = () => {
   //   getObservations();
   //   // eslint-disable-next-line
   // }, []);
+
   let error;
-  const payload = raw
+  const tableKeys = util.filterDataKeys(raw)
+
+  // const payload = raw.map((obs) =>
+  //   tableKeys.map((x) => (obs[x] && typeof obs[x] === "string" ? obs[x] : "-"))
+  // );
+  // observed observations screenpops navigation
+  const payload = raw;
+  // console.log(payload);
+  // console.log(tableKeys);
   return (
     <div className="table-container container overflow">
       {error ? (
@@ -29,19 +38,30 @@ const Table = () => {
         <table>
           <thead>
             <tr>
-              <th>timestamp</th>
-              <th>mood</th>
-              <th>note</th>
+              {tableKeys.map((x, id) => (
+                <th key={id}>{util.formatString(x)}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {payload.map((observation) => (
-              <tr key={observation.id}>
-                <td>{moment(observation.timestamp).format("DD MMM YYYY LT")}</td>
-                <td>{observation.event_type.replace(/_/g, " ")}</td>
-                <td>{observation.note && observation.note}</td>
-              </tr>
-            ))}
+            {payload.map((obs, id) => {
+              return (
+                <tr key={id}>
+                  {tableKeys.map((x, i) => {
+                    if (i===0) obs[x] = util.formatDate(obs[x])
+                    return (
+                      <td key={i}>
+                        {obs[x] && (typeof obs[x] === "string") 
+                           ? util.formatString(obs[x])
+                           : typeof obs[x] === "number"
+                           ? obs[x]
+                           : "-"}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       )}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { observationsRequest } from "../store/actions/observationsActions";
 import {raw} from "./raw";
 import TimelineGraph from "react-time-line";
+import * as util from "../util";
 
 const Timeline = () => {
   // const { payload, error } = useSelector((state) => state.observations);
@@ -15,7 +16,7 @@ const Timeline = () => {
   const payload = raw
   const lineData = () => {
     return payload.map((observation) => {
-      return { ts: observation.timestamp, text: observation.event_type.replace(/_/g, " ") };
+      return { ts: observation.timestamp, text: util.formatString(observation.event_type) };
     });
   };
 
