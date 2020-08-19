@@ -20,7 +20,7 @@ const Table = () => {
   let error;
   const payload = raw
   return (
-    <div className="table-container">
+    <div className="table-container container overflow">
       {error ? (
         <div>Error</div>
       ) : !payload ? (
@@ -37,8 +37,8 @@ const Table = () => {
           <tbody>
             {payload.map((observation) => (
               <tr key={observation.id}>
-                <td>{moment(observation.timestamp).format("LT DD MMM YYYY")}</td>
-                <td>{observation.event_type}</td>
+                <td>{moment(observation.timestamp).format("DD MMM YYYY LT")}</td>
+                <td>{observation.event_type.replace(/_/g, " ")}</td>
                 <td>{observation.note && observation.note}</td>
               </tr>
             ))}

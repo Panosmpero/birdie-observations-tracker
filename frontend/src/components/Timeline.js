@@ -22,7 +22,7 @@ const Timeline = () => {
   const data = payload ? lineData() : [];
   // console.log(data)
   return (
-    <div className="timeline-container">
+    <div className="timeline-container container overflow">
       <TimelineGraph items={data} format="hh:mm a" />
     </div>
   );
